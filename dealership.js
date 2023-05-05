@@ -3,26 +3,26 @@ const Car = require("./car.js");
 
 const Dealership = function(name){
     this.name = name;
-    stocks = [];
+    this.stocks = [];
 };
 
 Dealership.prototype.addCar = function(Car){
-        stocks.push(Car);
+        this.stocks.push(Car);
 };
 
 Dealership.prototype.countCars = function(){
-    console.log(stocks.length);
+    console.log(this.stocks.length);
 };
 
 Dealership.prototype.getAllManu = function(){
-    const manufacturers= stocks.map((car)=> {
+    const manufacturers= this.stocks.map((car)=> {
         return car.manufacturer;
     })
     console.log(manufacturers);
 }
 
 Dealership.prototype.filterManu = function(manufacturer){
-       const filteredItems = stocks.filter(a => {
+       const filteredItems = this.stocks.filter(a => {
         return a.manufacturer === manufacturer;
        })
        console.log(filteredItems)
@@ -30,7 +30,7 @@ Dealership.prototype.filterManu = function(manufacturer){
 };
 
 Dealership.prototype.AddUpStock = function(){
-   const total = stocks.reduce((accumulator, car) => {
+   const total = this.stocks.reduce((accumulator, car) => {
     return accumulator + car.price;
     }, 0);
    console.log(total);
@@ -47,3 +47,5 @@ v.filterManu("Toyota");
 v.AddUpStock();
 // console.log();
 // v.filterManu(2);
+
+module.exports = Dealership
